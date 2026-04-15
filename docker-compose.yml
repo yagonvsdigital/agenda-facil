@@ -61,13 +61,30 @@ services:
       context: ./corteja
       dockerfile: Dockerfile
       args:
-        VITE_API_URL: ${VITE_API_URL:-http://localhost:3000/api/v1}
+        VITE_API_URL: ${VITE_API_URL:-https://agendafacil.tec.br/api/v1}
     container_name: corteja_web
     restart: unless-stopped
-    ports:
-      - '80:80'
+    expose:
+      - '80'
     depends_on:
       - api
 
+  # ─── Caddy (HTTPS automático) ─────────────────────────────────
+  caddy:
+    image: caddy:alpine
+    container_name: corteja_caddy
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+
 volumes:
   postgres_data:
+  caddy_data:
+  caddy_config:

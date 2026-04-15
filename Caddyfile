@@ -1,17 +1,3 @@
-api.seudominio.com.br {
-    reverse_proxy localhost:3000
-
-    header {
-        # CORS para o app mobile
-        Access-Control-Allow-Origin *
-        Access-Control-Allow-Headers "Authorization, Content-Type"
-        Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-    }
-
-    # WebSocket
-    @websocket {
-        header Connection *Upgrade*
-        header Upgrade websocket
-    }
-    reverse_proxy @websocket localhost:3000
+agendafacil.tec.br {
+    reverse_proxy corteja_web:80
 }
