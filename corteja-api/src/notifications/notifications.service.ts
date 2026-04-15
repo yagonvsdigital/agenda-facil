@@ -81,4 +81,8 @@ export class NotificationsService {
   async notifyClientRescheduled(clientId: string, date: string, time: string): Promise<void> {
     await this.sendPush(clientId, '🔄 Horário remarcado', `Seu horário foi remarcado para ${date} às ${time}`)
   }
+
+  async notifyAppointmentCancelled(clientId: string, time: string, date: string): Promise<void> {
+    await this.sendPush(clientId, '❌ Agendamento cancelado', `Seu horário do dia ${date} às ${time} foi cancelado`)
+  }
 }
