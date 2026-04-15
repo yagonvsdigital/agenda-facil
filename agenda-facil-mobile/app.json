@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#0d9488"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.agendafacil.app",
@@ -27,13 +29,21 @@
         "backgroundColor": "#0d9488"
       },
       "package": "com.agendafacil.app",
-      "permissions": ["CAMERA", "NOTIFICATIONS", "VIBRATE"]
+      "permissions": [
+        "CAMERA",
+        "NOTIFICATIONS",
+        "VIBRATE",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "plugins": [
       "expo-router",
       [
         "expo-camera",
-        { "cameraPermission": "Precisamos da câmera para escanear o QR Code do seu profissional." }
+        {
+          "cameraPermission": "Precisamos da câmera para escanear o QR Code do seu profissional."
+        }
       ],
       [
         "expo-notifications",
@@ -47,7 +57,13 @@
       "typedRoutes": true
     },
     "extra": {
-      "eas": { "projectId": "YOUR_EAS_PROJECT_ID" }
-    }
+      "eas": {
+        "projectId": "4f4289d7-c20b-4efd-99cf-e5b11f846318"
+      },
+      "router": {
+        "origin": false
+      }
+    },
+    "owner": "yagonvsdigital"
   }
 }
