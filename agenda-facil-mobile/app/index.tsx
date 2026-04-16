@@ -27,8 +27,8 @@ export default function Onboarding() {
           </View>
 
           {/* Hero text */}
-          <View className="mb-8">
-            <Text className="text-3xl font-extrabold text-slate-900 leading-tight mb-3">
+          <View className="mb-8 items-center">
+            <Text className="text-3xl font-extrabold text-slate-900 leading-tight mb-3 text-center">
               Agendamento{'\n'}
               <Text className="text-brand-600">inteligente</Text>
             </Text>
