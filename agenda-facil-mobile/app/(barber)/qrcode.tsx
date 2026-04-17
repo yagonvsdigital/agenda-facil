@@ -16,7 +16,7 @@ export default function BarberQRCode() {
   useEffect(() => { api.barbers.getMyProfile().then(setProfile).catch(() => null) }, [])
 
   const bookingUrl = profile ? `${APP_URL}/book/${profile.id}` : ''
-  const deepLink = profile ? `agendafacil://book/${profile.id}` : ''
+  const deepLink = profile ? `secretariadigital://book/${profile.id}` : ''
 
   async function handleShare(url: string) {
     try { await Share.share({ message: url, url }) }
@@ -40,12 +40,12 @@ export default function BarberQRCode() {
           <View className="w-10 h-10 bg-brand-100 rounded-2xl items-center justify-center">
             <Ionicons name="download" size={20} color="#0d9488" />
           </View>
-          <Text className="font-bold text-slate-900 text-base">Baixar o Agenda Fácil</Text>
+          <Text className="font-bold text-slate-900 text-base">Baixar o Secretaria Digital</Text>
           <Text className="text-xs text-slate-500 text-center">Clientes escaneiam para instalar o app</Text>
           <View className="p-4 bg-slate-50 rounded-2xl">
-            <QRCode value="https://play.google.com/store/apps/details?id=com.agendafacil.app" size={160} color="#0f172a" />
+            <QRCode value="https://play.google.com/store/apps/details?id=com.secretariadigital.app" size={160} color="#0f172a" />
           </View>
-          <Pressable onPress={() => handleShare('https://play.google.com/store/apps/details?id=com.agendafacil.app')} className="flex-row items-center gap-2 bg-brand-50 rounded-xl px-4 py-2.5">
+          <Pressable onPress={() => handleShare('https://play.google.com/store/apps/details?id=com.secretariadigital.app')} className="flex-row items-center gap-2 bg-brand-50 rounded-xl px-4 py-2.5">
             <Ionicons name="share-outline" size={15} color="#0d9488" />
             <Text className="text-brand-700 text-sm font-semibold">Compartilhar</Text>
           </Pressable>

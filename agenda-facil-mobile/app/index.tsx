@@ -22,7 +22,7 @@ export default function Onboarding() {
             <View className="w-16 h-16 bg-brand-600 rounded-3xl items-center justify-center mb-4 shadow-lg">
               <Ionicons name="calendar-sharp" size={32} color="white" />
             </View>
-            <Text className="text-2xl font-extrabold text-slate-900 tracking-tight">Agenda Fácil</Text>
+            <Text className="text-2xl font-extrabold text-slate-900 tracking-tight">Secretaria Digital</Text>
             <Text className="text-slate-500 text-sm mt-1">Sua secretária digital</Text>
           </View>
 

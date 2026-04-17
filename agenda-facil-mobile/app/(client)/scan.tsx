@@ -18,7 +18,7 @@ export default function ClientScan() {
     setScanned(true)
     try {
       // Extrai o barberId do deep link ou URL
-      const id = data.replace('agendafacil://book/', '').replace(/.*\/book\//, '').trim()
+      const id = data.replace('secretariadigital://book/', '').replace(/.*\/book\//, '').trim()
       await api.barbers.getPublic(id)
       router.replace(`/(client)/barber/${id}` as any)
     } catch {

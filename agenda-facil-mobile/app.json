@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Agenda Fácil",
-    "slug": "agenda-facil",
+    "name": "Secretaria Digital",
+    "slug": "secretaria-digital",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "agendafacil",
+    "scheme": "secretariadigital",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -17,7 +17,7 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.agendafacil.app",
+      "bundleIdentifier": "com.secretariadigital.app",
       "infoPlist": {
         "NSCameraUsageDescription": "Usar câmera para escanear QR Code do profissional",
         "NSMicrophoneUsageDescription": "Necessário para câmera"
@@ -28,7 +28,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#38B2E8"
       },
-      "package": "com.agendafacil.app",
+      "package": "com.secretariadigital.app",
       "permissions": [
         "CAMERA",
         "NOTIFICATIONS",
