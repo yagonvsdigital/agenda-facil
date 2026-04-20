@@ -1,6 +1,6 @@
 import { useStore } from '../store/useStore'
 
-const API_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3000/api/v1'
+const API_URL = process.env.EXPO_PUBLIC_API_URL ?? 'https://agendafacil.tec.br/api/v1'
 
 async function request<T>(
   method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
