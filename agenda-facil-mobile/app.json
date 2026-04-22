@@ -28,7 +28,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#38B2E8"
       },
-      "package": "app.secretariadigital.mobile",
+      "package": "com.secretariadigital.app",
       "permissions": [
         "CAMERA",
         "NOTIFICATIONS",
