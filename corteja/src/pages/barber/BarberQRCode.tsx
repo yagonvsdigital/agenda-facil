@@ -116,7 +116,7 @@ export default function BarberQRCode() {
         <div className="bg-white rounded-2xl p-5 shadow-sm border border-zinc-100 flex flex-col items-center gap-4">
           <div className="flex items-center gap-2 text-blue-600">
             <Smartphone size={18} />
-            <p className="font-semibold text-sm">Baixar o Agenda Fácil</p>
+            <p className="font-semibold text-sm">Baixar o Secretaria Digital</p>
           </div>
           <QRCodeSVG
             id="qr-app"

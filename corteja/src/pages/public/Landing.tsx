@@ -21,7 +21,7 @@ function BarberMockup() {
           <CalendarCheck size={12} className="text-white" />
         </div>
         <div>
-          <p className="text-white text-xs font-bold">Barbearia Los Primos</p>
+          <p className="text-white text-xs font-bold">Barber Shop Los Primos</p>
           <p className="text-teal-200 text-[10px]">Hoje · 6 horários</p>
         </div>
       </div>
@@ -59,7 +59,7 @@ function ClientMockup() {
       <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
         <div>
           <p className="text-slate-900 text-xs font-bold">Escolha seu horário</p>
-          <p className="text-slate-400 text-[10px]">Barbearia Los Primos · Qua, 16 Abr</p>
+          <p className="text-slate-400 text-[10px]">Barber Shop Los Primos · Qua, 16 Abr</p>
         </div>
         <span className="text-[10px] bg-teal-50 text-teal-700 border border-teal-100 px-2 py-0.5 rounded-full font-medium">9 livres</span>
       </div>
@@ -139,7 +139,7 @@ export default function Landing() {
             <div className="w-8 h-8 bg-teal-600 rounded-xl flex items-center justify-center shadow-sm shadow-teal-600/30">
               <CalendarCheck size={15} className="text-white" />
             </div>
-            <span className="font-bold text-slate-900 text-base tracking-tight">Agenda Fácil</span>
+            <span className="font-bold text-slate-900 text-base tracking-tight">Secretaria Digital</span>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -243,7 +243,7 @@ export default function Landing() {
       {/* ── BENEFITS ───────────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-5 py-16">
         <p className="text-center text-xs font-bold uppercase tracking-widest text-teal-600 mb-3">
-          Por que Agenda Fácil
+          Por que Secretaria Digital
         </p>
         <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">
           Tudo que você precisa, nada que não precisa
@@ -300,10 +300,10 @@ export default function Landing() {
             <div className="w-6 h-6 bg-teal-600 rounded-lg flex items-center justify-center">
               <CalendarCheck size={11} className="text-white" />
             </div>
-            <span className="font-bold text-slate-700 text-sm">Agenda Fácil</span>
+            <span className="font-bold text-slate-700 text-sm">Secretaria Digital</span>
           </div>
           <p className="text-slate-400 text-xs">
-            &copy; {new Date().getFullYear()} Agenda Fácil. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Secretaria Digital. Todos os direitos reservados.
           </p>
           <button
             onClick={() => navigate('/login')}

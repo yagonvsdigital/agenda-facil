@@ -73,7 +73,7 @@ export default function RegisterClient() {
         </button>
         <div className="flex items-center gap-2 mb-2">
           <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center"><CalendarCheck size={16} className="text-white" /></div>
-          <span className="font-bold text-zinc-900">Agenda Fácil</span>
+          <span className="font-bold text-zinc-900">Secretaria Digital</span>
         </div>
         <div className="flex gap-1 mb-6">
           {[1, 2].map((s) => (<div key={s} className={`h-1 flex-1 rounded-full transition-all ${s <= step ? 'bg-brand-500' : 'bg-zinc-200'}`} />))}

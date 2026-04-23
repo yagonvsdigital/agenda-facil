@@ -92,7 +92,7 @@ export default function RegisterBarber() {
           <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
             <CalendarCheck size={16} className="text-white" />
           </div>
-          <span className="font-bold text-zinc-900">Agenda Fácil</span>
+          <span className="font-bold text-zinc-900">Secretaria Digital</span>
         </div>
         <div className="flex gap-1 mb-6">
           {[1, 2].map((s) => (

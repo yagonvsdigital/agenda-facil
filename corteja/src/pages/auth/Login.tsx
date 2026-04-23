@@ -66,7 +66,7 @@ export default function Login() {
           <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
             <CalendarCheck size={16} className="text-white" />
           </div>
-          <span className="font-bold text-zinc-900 text-lg">Agenda Fácil</span>
+          <span className="font-bold text-zinc-900 text-lg">Secretaria Digital</span>
         </button>
 
         <h1 className="text-2xl font-bold text-zinc-900 mb-1">
