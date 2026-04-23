@@ -73,40 +73,7 @@ function ClientMockup() {
   )
 }
 
-function AgendaMockup() {
-  const slots = ['09:00','09:30','10:00','10:30','11:00','11:30','14:00','14:30']
-  const booked = ['09:00','10:00','11:00']
-  const mine = '14:30'
-  return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden w-full max-w-xs">
-      <div className="bg-teal-600 px-4 py-3 flex items-center gap-2">
-        <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
-          <span className="text-white text-[10px] font-bold">Y</span>
-        </div>
-        <div>
-          <p className="text-white text-xs font-bold">Dr. Yago Neves</p>
-          <p className="text-teal-200 text-[10px]">Qua, 16 Abr · 5 horários livres</p>
-        </div>
-      </div>
-      <div className="p-3 grid grid-cols-4 gap-1.5">
-        {slots.map((s) => {
-          const isBooked = booked.includes(s)
-          const isMine = s === mine
-          return (
-            <div key={s} className={`rounded-xl py-2 text-center text-[10px] font-semibold border ${isMine ? 'bg-teal-600 text-white border-teal-600' : isBooked ? 'bg-slate-100 text-slate-300 border-slate-100' : 'bg-white text-slate-700 border-slate-200'}`}>
-              {s}
-            </div>
-          )
-        })}
-      </div>
-      <div className="px-3 pb-3">
-        <div className="bg-teal-600 rounded-xl py-2.5 text-center text-white text-xs font-bold">
-          Confirmar 14:30
-        </div>
-      </div>
-    </div>
-  )
-}
+
 /* ─────────────────────────────────────────────────────────────────────── */
 
 const benefits = [
