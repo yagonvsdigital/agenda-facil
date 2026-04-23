@@ -21,7 +21,7 @@ function BarberMockup() {
           <CalendarCheck size={12} className="text-white" />
         </div>
         <div>
-          <p className="text-white text-xs font-bold">Barber Shop Los Primos</p>
+          <p className="text-white text-xs font-bold">Doctor Yago Neves</p>
           <p className="text-teal-200 text-[10px]">Hoje · 6 horários</p>
         </div>
       </div>
@@ -51,33 +51,57 @@ function BarberMockup() {
 }
 
 function ClientMockup() {
-  const slots = ['09:00','09:30','10:00','10:30','11:00','11:30','14:00','14:30','15:00','15:30','16:00','16:30']
+  const professionals = [
+    { name: 'Dr. Yago Neves', type: 'Médico', color: 'bg-teal-500', initial: 'Y' },
+    { name: 'W. J. N. Carpentry', type: 'Carpintaria', color: 'bg-amber-500', initial: 'W' },
+    { name: 'Manicure Jaqueline M. N.', type: 'Manicure', color: 'bg-pink-500', initial: 'J' },
+    { name: 'Barbearia', type: 'Barbearia', color: 'bg-slate-600', initial: 'B' },
+  ]
+  return (
+    <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden w-full max-w-xs">
+      <div className="px-4 py-3 border-b border-slate-100">
+        <p className="text-slate-900 text-xs font-bold">Meus profissionais</p>
+        <p className="text-slate-400 text-[10px]">Selecione para ver a agenda</p>
+      </div>
+      <div className="p-3 flex flex-col gap-2">
+        {professionals.map((p) => (
+          <div key={p.name} className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 hover:border-teal-200 cursor-pointer transition-colors">
+            <div className={`w-8 h-8 ${p.color} rounded-full flex items-center justify-center shrink-0`}>
+              <span className="text-white text-xs font-bold">{p.initial}</span>
+            </div>
+            <div className="min-w-0">
+              <p className="text-[11px] font-semibold text-slate-800 truncate">{p.name}</p>
+              <p className="text-[10px] text-slate-400">{p.type}</p>
+            </div>
+            <ArrowRight size={12} className="text-slate-300 shrink-0 ml-auto" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function AgendaMockup() {
+  const slots = ['09:00','09:30','10:00','10:30','11:00','11:30','14:00','14:30']
   const booked = ['09:00','10:00','11:00']
   const mine = '14:30'
   return (
     <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden w-full max-w-xs">
-      <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-        <div>
-          <p className="text-slate-900 text-xs font-bold">Escolha seu horário</p>
-          <p className="text-slate-400 text-[10px]">Barber Shop Los Primos · Qua, 16 Abr</p>
+      <div className="bg-teal-600 px-4 py-3 flex items-center gap-2">
+        <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
+          <span className="text-white text-[10px] font-bold">Y</span>
         </div>
-        <span className="text-[10px] bg-teal-50 text-teal-700 border border-teal-100 px-2 py-0.5 rounded-full font-medium">9 livres</span>
+        <div>
+          <p className="text-white text-xs font-bold">Dr. Yago Neves</p>
+          <p className="text-teal-200 text-[10px]">Qua, 16 Abr · 5 horários livres</p>
+        </div>
       </div>
       <div className="p-3 grid grid-cols-4 gap-1.5">
         {slots.map((s) => {
           const isBooked = booked.includes(s)
           const isMine = s === mine
           return (
-            <div
-              key={s}
-              className={`rounded-xl py-2 text-center text-[10px] font-semibold border ${
-                isMine
-                  ? 'bg-teal-600 text-white border-teal-600'
-                  : isBooked
-                    ? 'bg-slate-100 text-slate-300 border-slate-100'
-                    : 'bg-white text-slate-700 border-slate-200'
-              }`}
-            >
+            <div key={s} className={`rounded-xl py-2 text-center text-[10px] font-semibold border ${isMine ? 'bg-teal-600 text-white border-teal-600' : isBooked ? 'bg-slate-100 text-slate-300 border-slate-100' : 'bg-white text-slate-700 border-slate-200'}`}>
               {s}
             </div>
           )
@@ -235,6 +259,15 @@ export default function Landing() {
                 Visão do cliente
               </span>
               <ClientMockup />
+            </div>
+            <div className="hidden sm:flex items-center self-center text-slate-300">
+              <ArrowRight size={20} />
+            </div>
+            <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
+              <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">
+                Agenda do profissional
+              </span>
+              <AgendaMockup />
             </div>
           </div>
         </div>
