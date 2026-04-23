@@ -5,24 +5,16 @@ import {
 } from 'lucide-react'
 
 /* ─── Mockup inline: prévia do produto ─────────────────────────────────── */
-function BarberMockup() {
-  const slots = [
-    { time: '09:00', client: 'Rafael M.', service: 'Degradê', confirmed: true },
-    { time: '09:30', client: null, service: null, confirmed: false },
-    { time: '10:00', client: 'Lucas P.', service: 'Social', confirmed: true },
-    { time: '10:30', client: null, service: null, confirmed: false },
-    { time: '11:00', client: 'Bruno A.', service: 'Barba', confirmed: true },
-    { time: '11:30', client: null, service: null, confirmed: false },
-  ]
+function BarberMockup({ title, color, slots }: { title: string; color: string; slots: { time: string; client: string | null; service: string | null }[] }) {
   return (
     <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden w-full max-w-xs">
-      <div className="bg-teal-600 px-4 py-3 flex items-center gap-2">
+      <div className={`${color} px-4 py-3 flex items-center gap-2`}>
         <div className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
           <CalendarCheck size={12} className="text-white" />
         </div>
         <div>
-          <p className="text-white text-xs font-bold">Doctor Yago Neves</p>
-          <p className="text-teal-200 text-[10px]">Hoje · 6 horários</p>
+          <p className="text-white text-xs font-bold">{title}</p>
+          <p className="text-white/70 text-[10px]">Hoje · agenda do dia</p>
         </div>
       </div>
       <div className="p-3 flex flex-col gap-1.5">
@@ -36,7 +28,7 @@ function BarberMockup() {
                 </div>
                 <div className="min-w-0">
                   <p className="text-[10px] font-semibold text-slate-800 truncate">{s.client}</p>
-                  <p className="text-[9px] text-teal-600">{s.service}</p>
+                  {s.service && <p className="text-[9px] text-teal-600">{s.service}</p>}
                 </div>
                 <CheckCircle size={10} className="text-teal-500 shrink-0 ml-auto" />
               </>
@@ -244,30 +236,62 @@ export default function Landing() {
           <p className="text-center text-slate-500 text-sm mb-10 max-w-md mx-auto">
             O profissional gerencia sua agenda. O cliente escolhe o horário. Cada um na sua tela.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 items-start justify-center">
-            <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
-              <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">
-                Painel do profissional
-              </span>
-              <BarberMockup />
+          <div className="flex flex-col gap-10">
+            {/* Row 1: Cliente + Médico */}
+            <div className="flex flex-col sm:flex-row gap-6 items-start justify-center">
+              <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
+                <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">Visão do cliente</span>
+                <ClientMockup />
+              </div>
+              <div className="hidden sm:flex items-center self-center text-slate-300"><ArrowRight size={20} /></div>
+              <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
+                <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">Dr. Yago Neves · Médico</span>
+                <BarberMockup title="Dr. Yago Neves" color="bg-teal-600" slots={[
+                  { time: '09:00', client: 'Rafael M.', service: null },
+                  { time: '09:30', client: null, service: null },
+                  { time: '10:00', client: 'Lucas P.', service: null },
+                  { time: '10:30', client: null, service: null },
+                  { time: '11:00', client: 'Bruno A.', service: null },
+                  { time: '11:30', client: null, service: null },
+                ]} />
+              </div>
             </div>
-            <div className="hidden sm:flex items-center self-center text-slate-300">
-              <ArrowRight size={20} />
-            </div>
-            <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
-              <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">
-                Visão do cliente
-              </span>
-              <ClientMockup />
-            </div>
-            <div className="hidden sm:flex items-center self-center text-slate-300">
-              <ArrowRight size={20} />
-            </div>
-            <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
-              <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">
-                Agenda do profissional
-              </span>
-              <AgendaMockup />
+
+            {/* Row 2: Carpentry + Manicure + Barbearia */}
+            <div className="flex flex-col sm:flex-row gap-6 items-start justify-center">
+              <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
+                <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">W. J. N. Carpentry</span>
+                <BarberMockup title="W. J. N. Carpentry" color="bg-amber-600" slots={[
+                  { time: '08:00', client: 'Carlos S.', service: 'Orçamento cozinha sob medida' },
+                  { time: '09:30', client: null, service: null },
+                  { time: '11:00', client: 'Fernanda L.', service: 'Orçamento de closet' },
+                  { time: '13:00', client: 'Marcos T.', service: 'Revisão de projeto' },
+                  { time: '14:30', client: null, service: null },
+                  { time: '16:00', client: 'Ana P.', service: 'Orçamento de deck' },
+                ]} />
+              </div>
+              <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
+                <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">Manicure Jaqueline M. N.</span>
+                <BarberMockup title="Manicure Jaqueline" color="bg-pink-500" slots={[
+                  { time: '09:00', client: 'Bianca R.', service: 'Unhas em gel' },
+                  { time: '10:00', client: null, service: null },
+                  { time: '11:00', client: 'Patricia V.', service: 'Manicure + pedicure' },
+                  { time: '13:00', client: 'Camila F.', service: 'Nail art' },
+                  { time: '14:30', client: null, service: null },
+                  { time: '15:30', client: 'Renata M.', service: 'Esmaltação' },
+                ]} />
+              </div>
+              <div className="flex flex-col items-center gap-3 flex-1 max-w-xs mx-auto">
+                <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">Barbearia</span>
+                <BarberMockup title="Barbearia" color="bg-slate-700" slots={[
+                  { time: '09:00', client: 'João V.', service: 'Degradê + barba' },
+                  { time: '09:30', client: null, service: null },
+                  { time: '10:00', client: 'Pedro H.', service: 'Corte social' },
+                  { time: '10:30', client: 'Diego M.', service: 'Barba' },
+                  { time: '11:00', client: null, service: null },
+                  { time: '11:30', client: 'Felipe A.', service: 'Degradê' },
+                ]} />
+              </div>
             </div>
           </div>
         </div>
