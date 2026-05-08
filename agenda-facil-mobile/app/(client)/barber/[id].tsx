@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { View, Text, ScrollView, Pressable, StatusBar } from 'react-native'
+import { View, Text, ScrollView, Pressable, StatusBar, TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
@@ -11,8 +11,6 @@ import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { useToast } from '@/components/ui/Toast'
 import type { BarberDto, TimeSlotDto, ClientProfessionalDto } from '@/services/api'
-
-const SERVICES = ['Corte social', 'Degradê', 'Corte + barba', 'Barba', 'Navalhado', 'Outro']
 
 export default function ClientBarberView() {
   const { id } = useLocalSearchParams<{ id: string }>()
@@ -146,14 +144,16 @@ export default function ClientBarberView() {
             ))}
           </View>
           <View>
-            <Text className="text-sm font-semibold text-slate-700 mb-2">Tipo de serviço (opcional)</Text>
-            <View className="flex-row flex-wrap gap-2">
-              {SERVICES.map(s => (
-                <Pressable key={s} onPress={() => setServiceType(serviceType === s ? '' : s)} className={`px-3 py-1.5 rounded-xl border ${serviceType === s ? 'bg-brand-600 border-brand-600' : 'bg-white border-slate-200'}`}>
-                  <Text className={`text-xs font-semibold ${serviceType === s ? 'text-white' : 'text-slate-600'}`}>{s}</Text>
-                </Pressable>
-              ))}
-            </View>
+            <Text className="text-sm font-semibold text-slate-700 mb-2">Serviço <Text className="text-slate-400 font-normal">(opcional)</Text></Text>
+            <TextInput
+              value={serviceType}
+              onChangeText={setServiceType}
+              placeholder="Ex: consulta, corte, manutenção..."
+              placeholderTextColor="#94a3b8"
+              maxLength={80}
+              autoCapitalize="sentences"
+              className="border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 bg-slate-50"
+            />
           </View>
           <View className="flex-row gap-2">
             <Button variant="secondary" fullWidth onPress={() => setConfirmModal(false)}>Cancelar</Button>

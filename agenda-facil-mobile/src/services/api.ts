@@ -11,17 +11,40 @@ async function request<T>(
   const token = useStore.getState().token
   const headers: Record<string, string> = { 'Content-Type': 'application/json' }
   if (auth && token) headers['Authorization'] = `Bearer ${token}`
-  const res = await fetch(`${API_URL}${path}`, {
-    method,
-    headers,
-    body: body ? JSON.stringify(body) : undefined,
-  })
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: 'Erro de conexão' }))
-    throw new Error(err.message ?? 'Erro desconhecido')
+
+  let res: Response
+  try {
+    res = await fetch(`${API_URL}${path}`, {
+      method,
+      headers,
+      body: body ? JSON.stringify(body) : undefined,
+    })
+  } catch (e) {
+    throw new Error('Erro de conexão. Verifique sua internet.')
   }
+
+  // Lê o body uma única vez como texto
+  const responseText = await res.text().catch(() => '')
+
+  if (!res.ok) {
+    let message = 'Erro no servidor'
+    try {
+      const json = JSON.parse(responseText)
+      message = json.message ?? json.error ?? `Erro ${res.status}`
+    } catch {
+      message = responseText ? `Erro ${res.status}: ${responseText.slice(0, 100)}` : `Erro ${res.status}`
+    }
+    throw new Error(message)
+  }
+
   if (res.status === 204) return {} as T
-  return res.json()
+  if (!responseText) return {} as T
+
+  try {
+    return JSON.parse(responseText) as T
+  } catch {
+    throw new Error('Resposta inválida do servidor')
+  }
 }
 
 // ─── Types ────────────────────────────────────────────────────

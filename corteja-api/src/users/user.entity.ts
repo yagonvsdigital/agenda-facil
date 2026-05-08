@@ -39,6 +39,15 @@ export class User {
   @Column({ name: 'fcm_token', nullable: true, length: 300 })
   fcmToken: string
 
+  @Column({ name: 'trial_started_at', type: 'timestamptz', nullable: true })
+  trialStartedAt: Date
+
+  @Column({ name: 'subscription_status', type: 'enum', enum: ['trial', 'active', 'expired'], default: 'trial' })
+  subscriptionStatus: 'trial' | 'active' | 'expired'
+
+  @Column({ name: 'subscription_expires_at', type: 'timestamptz', nullable: true })
+  subscriptionExpiresAt: Date
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date
 

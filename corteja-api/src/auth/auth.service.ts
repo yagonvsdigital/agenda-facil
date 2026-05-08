@@ -72,6 +72,12 @@ export class AuthService {
       user.verified = true
     }
 
+    // Atualiza status do trial automaticamente
+    if (user.subscriptionStatus === 'trial' && user.subscriptionExpiresAt && new Date() > new Date(user.subscriptionExpiresAt)) {
+      await this.users.update(user.id, { subscriptionStatus: 'expired' })
+      user.subscriptionStatus = 'expired'
+    }
+
     const token = this.jwt.sign({ sub: user.id, role: user.role })
     return { access_token: token, user }
   }
@@ -86,7 +92,9 @@ export class AuthService {
     if (existing) {
       throw new BadRequestException('Telefone já cadastrado')
     }
-    return this.users.create({ ...data, verified: false })
+    const trialStartedAt = new Date()
+    const subscriptionExpiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    return this.users.create({ ...data, verified: false, trialStartedAt, subscriptionStatus: 'trial', subscriptionExpiresAt })
   }
 
   signToken(userId: string, role: string) {

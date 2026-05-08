@@ -2,7 +2,7 @@
   "expo": {
     "name": "Secretaria Digital",
     "slug": "secretaria-digital",
-    "version": "1.0.0",
+    "version": "1.0.13",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "secretariadigital",
@@ -29,6 +29,7 @@
         "backgroundColor": "#38B2E8"
       },
       "package": "com.secretariadigital.app",
+      "versionCode": 17,
       "permissions": [
         "CAMERA",
         "NOTIFICATIONS",
@@ -38,6 +39,14 @@
       ]
     },
     "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "targetSdkVersion": 35
+          }
+        }
+      ],
       "expo-router",
       [
         "expo-camera",
